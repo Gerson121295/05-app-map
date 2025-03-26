@@ -1,0 +1,763 @@
+
+
+				--- Notas-React-Pro ---
+
+***** 	Recursos *****
+- PlayList React+TypeScript :
+ https://www.youtube.com/playlist?list=PLCKuOXG0bPi26-eawizqyLOgM7j66H_4M
+
+- Repositorio del curso:
+https://github.com/Klerith/react-bases/tree/rama-counter-by
+
+--Aprenderás cómo desplegar manualmente tu aplicación de React desde Visual Studio Code a AWS Cloud en solo 17 sencillos pasos, cubriremos Amazon Route 53, CloudFront, Amazon Certificate Manager, S3 Buckets y IAM.
+--https://medium.com/@kagamimendoza/c%C3%B3mo-desplegar-manualmente-una-aplicaci%C3%B3n-empresarial-react-en-la-nube-de-aws-5041eaf58168
+
+
+Acá dejo una pequeña contribución ha este excelentísimo curso
+
+Cómo implementar manualmente una aplicación React en un Azure App Service
+https://medium.com/@kagamimendoza/c%C3%B3mo-implementar-manualmente-una-aplicaci%C3%B3n-react-en-un-azure-app-service-7d8911498983
+
+
+-- Crear - App React en Typescript
+Hp01@DESKTOP-EMF7H53 MINGW64 ~/OneDrive/Escritorio/Cursos/Udemy/react-pro/React+TypeScript (main)
+$ npx create-react-app mi-app --template typescript     //Comando a usar: mi-app(nombre de la app)
+
+We suggest that you begin by typing: -> cd mi-app  ->  npm start  -> Navegador escribir: http://localhost:3000/
+
+-En el proyecto mi-app abrir tsconfig.json para eliminar el modo estricto se debe cambiar o eliminar: "strict": true,  
+pero no se debe de hacer de lo contraria mejor trabajar con javascript con Typescript nos permitira trabajar de mejor 
+manera y ordenada ya que se debera especificar el tipo de dato
+
+
+-- Crear app React y Typescript usando VITE
+C:\Users\Escritorio\react-pro\React+TypeScript
+λ npm create vite@latest   --Ejecutar el comando
+Need to install the following packages:
+create-vite@6.0.1
+Ok to proceed? (y) y
+√ Project name: ... todo-app		-- Dar nombre al proyecto
+√ Select a framework: » React		-- Seleccionar
+√ Select a variant: » TypeScript    -- Seleccionar
+
+Done. Now run:
+  cd todo-app
+  npm install
+  npm run dev
+
+
+-> Instalar extension Error Lens en VSC que permite mostrar los errores
+-> INstalar la extension: paste JSON as code
+
+- Libreria de animacion:
+-- https://gsap.com/   ->Menu -> Docs -> Installation -> npm install gsap
+
+- Patron redux: https://read.reduxbook.com/markdown/part1/04-action-creators.html
+- Rutas con React Router V6: https://reactrouter.com/   -> npm i react-router
+-- https://reactrouter.com/start/framework/routing
+-- https://github.com/Gerson121295/react-0-a-experto/blob/main/10-calendar/src/router/AppRouter.jsx
+
+
+- Git: git checkout -- .   //por si se borrar algun archivo permite restaurar al ultimo commit realizado
+-> git checkout -b lazyload-nested-rrd7		//Crea la rama y se mueve a esa rama
+-> git checkout lazyload-nested-rrd7		//Moverse a la rama 
+-> git push --set-upstream origin lazyload-nested-rrd7   //para subir una rama al repositorio
+-> Para poder ver el diseño del README.md en la barra comando escribir: >preview  ->y seleccionarlo
+-> git tag -a v0.0.1 -m "S9 Version 0.0.1 Ok"  
+-> git push 
+-> git push --tags
+-> Para evitar que los logs se suban a los repositorios de github en el .gitignore y escribir: *.log
+
+		------  Guia para NPM Deploy  -------
+-> Pdf: https://drive.google.com/file/d/12EfNL-CV1BFuBb7euzhq8P7q9Y6IOIqF/view?usp=sharing
+
+-> Formik: https://formik.org/
+
+-> Expresion regular que evalua si el Email es valido  
+const isValidEmail = ( email: string ) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+
+- Formulario con Formik
+https://formik.org/docs/tutorial
+
+-Agregar Formik al proyecto: npm i formik
+
+-Validacion del email con Formik:  
+
+formik-email-validation.ts
+if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
+
+
+->Yup-Validation Schema Builder: npm i yup
+-> https://www.npmjs.com/package/yup
+-> importarlo en el component: import * as Yup from 'yup';
+
+
+
+-- S12: Storybook - Cama para creacion y mantenimiento de componentes y paquetes
+C:\Users\Escritorio\react-pro\React+TypeScript
+λ npm create vite@latest   --Ejecutar el comando
+->Project name: my-storybook -> Seleccionar: React -> TypeScript + SWC o TypeScript -> 
+-> cd my-storybook ->  npm install ->  npm run dev -> code . 
+
+- Storybook: Cama o vitrina donde se ponen los componentes para mostrar a otro para que vean como funciona el componente
+-> https://storybook.js.org/  -> Docs ->get started ->Install ->Seleccionar React
+->Instalar: npx storybook@latest init
+->Luego de instalarlos automaticamente lo corre por el puerto: http://localhost:6006/
+
+->Se recomienda hacer un proyecto aparte para hacer el Storybook de la app
+->Configurar en package.json para correr el storybook:
+->en "scripts" especificamente en "dev":"vite" cambiar vite por "npm run storybook"
+
+"scripts": {
+    "dev": "npm run storybook",		// "vite",
+  },
+
+-> Para lanzar la app ejecutar:
+-> npm run dev y asi abre el storybook en el puerto http://localhost:6006/ y no la app
+
+-- Desplegar StoryBook
+-> En package.json en script se encuentra el comando a ejecutar:build-storybook
+-> Ejecutar: npm run build-storybook  ->Genera la carpeta: storybook-static
+
+->Para deplegarlo ir a: https://www.netlify.com/ ->Logearse con github
+->clic en Sites -> Arrastar la capeta storybook-static en el rectangulo ofrecido por Netlify y desplegarlo
+-> clic en deploy-productions. ->Luego copiar el link y compartirlo al equipo.
+
+
+-- Desplegar StoryBook en GitHubPage
+-> Cambiar nombre de la capeta "storybook-static" a "docs" porque docs sera el sitio web a publicar lo que buscara githubpage
+
+-> Ir a Github -> Entrar al repositorio -> Ir a Setting -> Page
+-> en Build and deployment: en Source: Deploy from a branch. Branch:main Carpeta: /docs -> Clic en Save
+-> Esperar a que genere el Link.
+
+-> Si presenta error al abrir la app, comentario de la solucion:
+-> A la hora de hacer el deploy y abrir la app desde Github pages me he encontrado con este error en Storybook. 
+-> La aplicación falla a la hora de compilar por el formato del nombre de los archivos de js. Para corregir el error, 
+-> debemos añadir un archivo con nombre '.nojekyll' en la raíz del directorio estático que generamos con el build de storybook, en este caso docs.
+-> Con este cambio, debe correr sin problemas!
+-> Aquí he encontrado la información del problema: https://github.com/storybookjs/storybook/issues/20564
+
+-> Chromatic
+-> https://www.chromatic.com/ ->Logearse con github -> Crear proyecto utilizando uno almacenado en github S12-storybook-react
+-> Seleccionar StoryBook -> luego instalar en el proyecto 03-mi-storybook lo generado por Chromatic
+-> Get the Chromatic package:  npm install --save-dev chromatic
+-> Publish your Storybook: npx chromatic --project-token=chpt_b4c794f3f764871  //comando para publicar el proyecto
+-> Luego de instalarlos en el package.json se encontraria el token
+
+-> Para poder ejecutar Chromatic ejecutar: 'npm run chromatic' or 'yarn chromatic'.
+
+-> Luego en la pagina de Chromatic donde se encuentra publicado el proyecto ->Clic en Catch a UI Change 
+-> Levantar el storybook de forma local el proyecto de chromatic ejecutando: npm run dev
+-> Agregar una nueva historia en nuestro code storybook para luego ejecutar publicar nuevamente el storybook
+->  npm run chromatic //cada vez que se ejecute sera un build
+-> abrir chromatic y clic en Go to your project para ver los cambios realizados y comentar y acceptar o denegar los cambios
+
+-> S13: NPM Emaquetamiento y publicación
+-> Repositorio para revisar las Configuraciones: https://github.com/Gerson121295/S12-storybook-react.git
+
+-- Configuraciones en el package.json
+-> PeerDependencies necesarias que el user las tenga instaladas como react y react-dom
+-> mover las dependencias de dependencies(queda vacio) a devDependencies y copiarlas en peerDependencies
+-> File: los archivos que van a ser subidos a NPM
+
+-> en "scripts" especificamente en build: "build": "tsc -b && vite build", dejar solo "tsc"
+
+-- Configuraciones en tsconfig.json copiar todas las de este archivo: https://gist.github.com/Klerith/d7b24a955c714b708479ef911b0837ca
+-->Luego de las configuraciones realizar el build de la APP:
+-> Ejecutar npm run build  -> Se genera errores y se crea la carpeta de dist 
+-> Corregir los errores: en src/main.tsx import App from './App.tsx'  → no va el .tsx
+-> En algunos componentes no es necesario la importacion: import React from 'react';
+
+-> En los todos los componentes que lo requieran hacer lo siguiente:
+-> MyLabel: agregar el export a la interface: export interface Props 
+-> y en MyLabel.stories.ts agregar en el import: Props y en meta: meta:Meta<Props>
+
+	import { MyLabel, type Props,  } from '../components/MyLabel';
+	const meta:Meta<Props> = {
+
+-> Esto mismo realizarlo en Header.tsx y en Header.stories.ts y en otros archivos
+-> Header.tsx:  export interface HeaderProps {
+-> Header.stories.ts: 
+	import { Header, type HeaderProps } from './Header';
+	const meta: Meta<HeaderProps> = {
+
+->Eliminar la carpeta  dist generada ->Luego ejecutar: npm run build
+-> RECOMENDADO: para que automaticamente se elimine la carpeta dist actual luego
+-> de realizar un: npm run build instalar: npm i -D rimraf
+-> Luego abrir el package.json y en scripts definir: "clean":"rimraf dist/"
+-> Luego para borrar la carpeta dist ejecutar: npm run clean
+-> Ahora configurar el clean automatico en el package.json: 
+-> en "scripts" -> build agregar npm run clean && antes del tsc: "build": "npm run clean && tsc",
+
+-> Genera la carpeta dist con carpeta: components, stories, etc...
+
+-- Copiar los recursos estaticos como asets, css, etc ...
+-> Instalar: npm i -D copyfiles
+-> Abrir el package.json y en scripts definir:
+-> "copyfiles":"copyfiles -u 1 src/**/*.css dist/" 
+-> para copiar jpg u otros archivos:  "copyfiles":"copyfiles -u 1 src/**/*.{css|jpg} dist/" 
+-> Ejecutar: npm run copyfiles  //en dist/components aparece los archivos .css
+
+-> Para hacer automatico la copia de archivos css luego de hacer el build 
+-> Abrir el package.json y en scripts -> build definir el npm run copyfiles:
+-> "build": "npm run clean && tsc && npm run copyfiles",
+
+
+- Hacer Deploy de paquete en NPM
+		------  Guia para NPM Deploy  -------
+-> Pdf: https://drive.google.com/file/d/12EfNL-CV1BFuBb7euzhq8P7q9Y6IOIqF/view?usp=sharing
+file:///C:/Users/Hp01/Downloads/material-react-pro/Desplegar-NPM.pdf
+
+
+-> https://www.npmjs.com/  ->Login -> Package
+-> En ruta del proyecto abrir terminal y ejecutar: npm login
+-> Ejecutar: npm publish
+
+-> Al hacer un cambio y volver hacer un npm publish dara error, por lo que en el
+-> package.json en version se debe aumentar: amtes:"version": "0.0.1", ahora: "version": "0.0.2", o "version": "0.0.1-rc1",
+
+->En el src del proyecto crear archivo index.ts donde se definen los archivos que serán permitidos a la personas
+-> que importen el paquete de npm
+-> Borrar carpeta dist y ejecutar: npm run build  //en dist crea index.d.ts
+-> En package.json agregar la propiedad:
+	"main": "dist/index.js",  //definido en src los components a exportar
+  	"typings": "dist/index.d.ts",  //generado en el dist basado en indes.js
+
+--> npm publish --dry-run  //dice vamos a ver que pasaria si lo quiero publicar (archivos a subir)
+--> npm publish --tag rc   //publicar otra version NOTA: al publicar aumentar la version en el package.json
+
+
+-- Crear app vite React -> TypeScript  04-package-consumer para consumir el paquete subido a NPM
+-> Instalar el paquete: npm install gep-custom-components-sb@0.0.1-rc-4  //especificar la version actual
+
+-- NP - A better npm publish
+-> Instalar: npm i -D np
+-> En package.json en scripts definir: "push:npm":"np"
+-> Ejecutar: npm run push:npm   //y  -> Elegir minor: 0.1.0
+-> para conocer poder buscar otros paquetes ejemplo en nodeModules buscar el de react y ver su package.json el cual se define las configuraciones establecidas
+-> En este caso se definio las versiones de node que requiere el proyecto:
+"engines": {
+    "node": ">=12.0.0"
+  },
+
+--> Si al ejecutar: npm run push:npm  //y -> minor da el error: Check local working tree //requiere hacer git add . y commit y push
+-> En package.json en scripts definir:  "test": "echo 'all tests were good'" //ya que el paquete para subir requiere que se hallan realizado los test
+
+automaticamente abre github y en se escribe la version: 
+-> Version 0.1.0 Lista para publicar  y seleccionar version latest y clic en publicar.
+-> Al recargar npm en package ya se encuentra la nueva version minor subida: 0.1.0
+-> Automaticamente actualiza el package.json de forma automatica con la version: 0.1.0 y crea un commit con esa version
+
+
+--Actualizar la version del paquete en la app  04-package-consumer
+-- Instalar de forma global el paquete para instalar dependencias:
+-> npm install -g npm-check-updates
+-> npx npm-check-updates  //de forma local en el proyecto, para ver las dependencias que tienen  nuevas versiones
+-> npx npm-check-updates -u //de forma local para instalar las nuevas versiones de las dependencias
+-> npm install
+
+-> Si se instalo global: ncu --version  
+-> ejecutar: ncu   //para ver las dependencias que tiene nuevas versiones
+-> ncu -u //para hacer la actualizacion
+-> npm install
+
+
+-- S15: React + PWA
+> Recurso
+-> https://web.dev/articles/service-worker-lifecycle?hl=es
+-> https://developer.chrome.com/docs/workbox?hl=es-419
+-> https://create-react-app.dev/docs/making-a-progressive-web-app/
+
+-- para testear el proyecto en producción localmente react en Yarn: 
+-> Realizar un: yarn build
+-> Requerido Instalar de forma global(por consola: 
+-> yarn global add serve  
+-> Luego en el proyecto ejecutar para utilizar la app desde produccion: serve -s build
+
+-- para testear el proyecto en producción localmente Usando Vite+react en NPM: 
+-> Realizar un: npm run build
+-> Para npm: npm install -g serve   -> serve -s build  o  serve -s dist
+-> Otra opcion 
+-> npm run build  -> npm run preview
+
+
+--> ****** Service worker para una aplicacion existente - npx creacte react  ******
+-> Doc: https://create-react-app.dev/docs/making-a-progressive-web-app/
+-> Crear un nuevo proyecto de react con el siguiente comando:  npx create-react-app my-app --template cra-template-pwa
+-> para copiar los archivos service-worker.js y serviceWorkerRegistration.js en el src del proyecto a implementar el pwa
+-> del proyecto my-app copiar del package.json toda las dependencies relacionadas a "workbox-
+ "workbox-background-sync": "^5.1.3",
+    "workbox-broadcast-update": "^5.1.3",
+    "workbox-cacheable-response": "^5.1.3",
+    "workbox-core": "^5.1.3",
+    "workbox-expiration": "^5.1.3",
+    "workbox-google-analytics": "^5.1.3",
+    "workbox-navigation-preload": "^5.1.3",
+    "workbox-precaching": "^5.1.3",
+    "workbox-range-requests": "^5.1.3",
+    "workbox-routing": "^5.1.3",
+    "workbox-strategies": "^5.1.3",
+    "workbox-streams": "^5.1.3"
+-> de my-app en el index.js copiar la importacion serviceWorkerRegistration y copiar la linea de abajo del serviceWorkerRegistration y pegarla en el index.js del proyecto del pwa: 
+
+
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'; 
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+serviceWorkerRegistration.unregister();
+
+--> asi queda en el index.js del proyecto a pwa 
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+ReactDOM.render(<CalendarApp />, document.getElementById('root'));
+serviceWorkerRegistration.unregister();
+
+
+  ******  Service worker para una aplicacion existente - Para vite+react  ****** 
+
+--> PWA Vite+React: https://dev.to/bhendi/turn-your-react-vite-app-into-a-pwa-3lpg
+
+--> Utilizar el plugin PWA de vite, instalarlo y agregar al archivo vite.config.js, 
+-> las configuraciones correspondientes (puede ser una sola linea de código y hace todo automático). 
+
+Instalar:
+
+$ npm i vite-plugin-pwa -D   //npm install -D vite-plugin-pwa
+Agregar al archivo vite.config.js/ts:
+
+import { VitePWA } from 'vite-plugin-pwa' 
+export default defineConfig({ plugins: [ VitePWA({ registerType: 'autoUpdate' }) ] })
+
+Ejecutar:
+$ npm run build
+$ npm run preview
+
+
+		********************** Aporte PWA Vite+React ********************** 
+Para los que usamos VITE, este es el detalle para seguir el curso
+
+-> 1.  Instalar npm install -D vite-plugin-pwa 
+-> 2. en vite.config.js: (La configuración sirve para usar en modo desarrollo así no toca hacer build cada vez)
+
+-> Esta opción obliga a usar el service worker personalizado  strategies: "injectManifest",
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { VitePWA } from "vite-plugin-pwa";
+ 
+// https://vitejs.dev/config/
+ 
+export default defineConfig({
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: "autoUpdate",
+      devOptions: {
+        enabled: true,
+        type: "module",
+        navigateFallback: "index.html",
+        suppressWarnings: true,
+      },
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.js",
+    }),
+  ],
+});
+
+
+
+-> ***  3. Crear src/sw.js: ***
+
+import {
+    cleanupOutdatedCaches,
+    createHandlerBoundToURL,
+    precacheAndRoute,
+  } from "workbox-precaching";
+   
+  import { clientsClaim } from "workbox-core";
+   
+  import { NavigationRoute, registerRoute } from "workbox-routing";
+   
+  cleanupOutdatedCaches();
+  // self.__WB_MANIFEST is default injection point
+  precacheAndRoute(self.__WB_MANIFEST);
+   
+  // to allow work offline
+  registerRoute(
+    new NavigationRoute(createHandlerBoundToURL("index.html"), {
+      denylist: [/^\/backoffice/],
+    })
+  );
+   
+  //self.skipWaiting();
+
+// This allows the web app to trigger skipWaiting via
+// registration.waiting.postMessage({type: 'SKIP_WAITING'})
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+      self.skipWaiting();
+    }
+  });
+
+  clientsClaim();
+  
+  self.addEventListener("install", async (event) => {
+    const cache = await caches.open("cache-1");
+   
+    await cache.addAll([
+   //recursos necesarios de la app para su funcionamiente para guardar en el cache
+   //Estilos en boostrp
+   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
+   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css',
+    '/public/vite.svg'
+
+
+    ]);
+  });
+
+
+
+//Manual - Network first with cache fallback
+
+//Urls a almacenar en cache
+  const apiOfflineFallbacks = [
+    'http://localhost:4000/api/auth/renew',
+    'http://localhost:4000/api/events'
+  ]
+
+
+  //Fetch dentro del service worker
+  //Almacena el token renovado en cache para que la app se mantenga con el inicio de sesion activo y muestra los eventos - SOLO EVENTOS GET
+  self.addEventListener('fetch', ( event ) => {
+    //console.log(event.request.url); //obtener las url 
+
+    //si url no es igual a la url se sale 
+    //if(event.request.url !== 'http://localhost:4000/api/auth/renew') return; //para 1 url
+    
+    //valida si no se encuentras las urls definidas en apiOfflineFallbacks en event.request.url se sale, no sigue ejecutando
+    if( !apiOfflineFallbacks.includes(event.request.url )) return;  //el ! indica si no esta o no es
+
+
+    //console.log(event.request.url) //solo aparece la url del renew
+    //console.log('Voy a manejar el RENEW  renew ') 
+    const resp = fetch(event.request) //peticion a url renew
+        //parte de network
+        .then( response => {  //si se ejecuta el .then se llego a la reques y se tiene la info en resp
+            
+            //si no exite la response retorna 
+            if( !response ) {
+                return caches.match(event.request)
+            }
+            
+            //Si se tiene una respuesta, en esta parte se guarda en cache que quiero almacenar en cache
+            caches.open('cache-dynamic') //nombre opcional: cache-dynamic
+                .then(cache => {  //.then abre el cache para agregar la data
+                    cache.put( //con put si ya existe en cache se agrega ahi lo actualiza
+                        event.request, response  // event.request=lo que solicitan, response=lo que responde
+
+                    )
+
+                })
+            return response.clone(); //response se clona agregando .clone() debido a que se utilizará mas de una vez, se debe regresar tal como estaba
+        })
+        //si falla guardar en cache retorna el cache fallback
+        .catch( err => {
+            console.log("Ofline response");
+            //regresa algo del cache
+            return caches.match(event.request)  //si falla retorna response 
+        })
+
+        event.respondWith( resp ); //el evento es respondido con la resp
+  });
+
+
+-> se deben instalar dependencias
+-> Then in your src/sw.ts file, remember you will also need to add following workbox dependencies as dev dependencies:
+  "workbox-build": "^5.1.3",
+    "workbox-core": "^5.1.3",
+    "workbox-routing": "^5.1.3",
+    "workbox-strategies": "^5.1.3"
+-> Borrar carpeta node_modules y archivo package-lock.json y luego realizar un npm install > npm run build -> npm preview o serve -s dist
+-> Se puede usar en modo desarrollo , se crea una carpeta automáticamente dev-dist y se pueden hacer cambio en caliente al src/sw.js o al vite.config.js e ir viendo los efectos.
+-> Si hacen build, con el vite preview se puede usar tambien
+
+		**********************   **********************   ********************** 
+
+
+ ****** Verificar la activacion del service worker ******
+--> realizar: yarn build  o npm run build //genera la version de distribucion de la app
+-> Abrir la carpeta del build y deberia gernerarse el service-worker.js
+-> Ejecutar:  serve -s build  o serve -s dist
+-> ver el proyecto desplegado en produccion ->clic en derecho ->inspeccionar 
+-> seleccionar Applicaction > Service Workers y el status debe estar activado
+-> La informacion o token renew se guarda en -> Applicaction > cache storage -> cache-dynamic
+-> En Applicaction > Service Workers > presionar en skipWaiting para activar y reactovar eñ service worker luego actualizar
+-> el navegador, luego para probar el service worker seleccionar y clic en offline y la aplicacion se debe mantener activa
+-> Se revisa en inspeccionar la pestaña de Network y revisa el renew y se ve que la solicitud fue devuelta del service worker (almacenado en cache)
+
+
+-> Se busca almacenar el token de autenticacion y renew guardarlo en cache y asi utilizarlo
+
+-> Para borrar datos del cache almacenado en el navegador ir a: 
+-> Inspeccionar > Application > Storage > Clic en clear site data → recargar el navegador > tener en el service worker seleccionado offline y no debe mostrar la app, debe mostrar:Sin conexión a Internet
+> deseleccionar offline y debe mostrar la app, la app debe estar corriendo desde produccion npm run build > npm preview "o" serve -s dist
+
+
+--> S16: Workbox  
+-> Workbox CLI - https://developer.chrome.com/docs/workbox/modules/workbox-cli/#install-the-cli
+-> Workbox SW Manual: https://developer.chrome.com/docs/workbox?hl=es-419
+
+
+-> Instalar de forma global en terminal como administrador:
+-> npm install workbox-cli --global 	-> workbox --version
+-> npm install workbox-cli --save-dev
+-> Ejecutar workbox en terminal de VSC
+-> workbox wizard  > Seleccionar carpeta: /dist > seleccionar todos los archivos > enter > enter > No
+npx workbox-cli wizard
+
+> Opciones selecciondos:
+ What is the root of your web app (i.e. which directory do you deploy)? dist/
+? Which file types would you like to precache? css, js, html, svg
+? Where would you like your service worker file to be saved? dist/sw.js
+? Where would you like to save these configuration options? workbox-config.js
+? Does your web app manifest include search parameter(s) in the 'start_url', other than 'utm_' or 
+'fbclid' (like '?source=pwa')? No
+
+--> Esto genera el archivo workbox-config.js
+-> En el package.json eliminar:   "type": "module",
+> Ejecutar en terminal: workbox generateSW workbox-config.js  //este comando se ejecuta cada vez que se realice modificaciones en el archivo de react par que genere archivos
+> genera 3 archivos: sw.js, sw.js.map, workbox-fce598b1
+-> Ejecutar serve -s dist  //no es necesario ejecutar: npm run build
+
+
+--> NOTA: para que acepte codigo en el <script></script> en el index.html instalar: npm install -D vite-plugin-pwa 
+
+-> Agregar el siguiente script en el public/index.html(esto se evita si se instala npm install -D vite-plugin-pwa)
+  <script type="module" src="/src/envConfig.js"></script> </body>
+-> Crear archivo: envConfig.js agregar las variables de entono 
+export const ENV = {
+    MODE: import.meta.env.VITE_MODE || 'development',
+    API_URL: import.meta.env.VITE_API_URL || 'http://localhost:4000/api',
+  };
+  console.log('Environment Variables:', ENV);
+-> Como resultado al ejecutar npm run dev //en consola aparece dev -este entorno se estara utilizando
+-> AL ejecutar npm run build -> serve -s dist //en consola aparece prod -este entorno se estara utilizando
+
+-> Solo podemmos ejecutar la instalacion del service worker si estamos en produccion
+-> Recomendable primero hacer -> npm run build > workbox generateSW workbox-config.js > serve -s dist
+
+
+->  ****** Otra Forma de crear el WOrkbox SW Manual, la forma automatica es ejecutar el workbox generateSW workbox-config.js
+--> Se crea el archivo sw-template.js
+-> Ir a: https://developer.chrome.com/docs/workbox/modules/workbox-sw?hl=es-419
+-> Copiar: importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js');
+-> Ejecutar: workbox injectManifest   -crea el archivo dist/sw.js y agrega las urls a precache
+-> lanzar la app serve -s dist
+
+→ NOTA: Para evitar estar ejecutando: workbox injectManifest -→ abrir el package.json y 
+→ en "scripts" agregar: "PWA":"workbox injectManifest" y en el build agregar el "&& run PWA" queda: "build": "vite build npm && run PWA",
+→ Con esto al hacer el npm run build se ejecuta tambien el workbox injectManifest generando los archivos sw.js
+> Revisar el service workers en Aplication > Cache storage > y aparecen ahi con la informacion almacenada tambien revisar en NETWORK: y los archivos min.css y otros deben ser servidos desde el ServiceWorkers
+> Cuando no se hace modificaciones  a la app se puede ejecutar el npm run PWA
+
+-> **** Estrategias de workboox
+- https://developer.chrome.com/docs/workbox/modules/workbox-strategies?hl=es-419
+-> Extrategia Workbox Background Sync: https://developer.chrome.com/docs/workbox/modules/workbox-background-sync?hl=es-419
+
+-> Para hacer los posteos sin conexion se usa: Background Sync y para revisar se revisa en Aplication > 
+-> Storage > indexedDB >seleccionar DB y clic en requests
+
+--> Funcionalidad para detectar si se tiene acceso a internet o no y mostrar mensaje de Online y Offline
+-> Recurso: https://www.npmjs.com/package/react-detect-offline
+-> Instalar: npm i react-detect-offline
+
+
+
+-> S17: Mapas - Marcadores - Rutas - Polylines - Mapbox  --→ App: 05-maps-app
+-> Obtener la geolocalizacion de la persona
+→ Configuracion del navegador para definir la longitud y ubicacion: 
+→ ejecutar la app > http://localhost:5173/ > clic derecho inspeccionar > clic donde aparece console en los 3 puntos cerca de la X
+> clic en More tools > Sensors > en Location Seleccionar: NO Override o Other(para agregar la latitude y longitud) Usar Other
+> Ir a googleMaps seleccionar un lugar optener la latitud y Longitud y agregarlo ahi para tener esa localizacion
+
+→ Crear cuenta en https://www.mapbox.com/
+-> Mapbox dejó de ser un proyecto Open source desde el 2020, por lo que no podrás crear una cuenta sin poner tus datos bancarios; asi que, investigando un poco, la comunidad creó una alternativa llamada "MapLibre" (https://maplibre.org/) que es casi una copia "exacta" de Mapbox.
+-> Para los estilos de las calles, rios, etc. puedes crearte una cuenta gratis en MapTiler, un proveedor de diseño de mapas cloud y debes obtener un token para usar sus estilos.
+
+-> Url de ayuda  para hacer el mismo proceso que el prof: https://docs.maptiler.com/sdk-js/examples/how-to-use/
+
+Mapbox es gratis solo pide targeta para validar la existencia
+Puedes usar este generador de tarjetas:
+https://herramientas-online.com/generador-tarjeta-credito-cvv.php
+
+
+
+-> Mapbox es de paga por lo tanto usar MapLibre: https://maplibre.org/maplibre-gl-js/docs/
+-> Instalar: npm install maplibre-gl
+-> Copiar los CDN y pegarlos en el index.html:
+	<script src="https://unpkg.com/maplibre-gl@^5.0.1/dist/maplibre-gl.js"></script>
+	<link href="https://unpkg.com/maplibre-gl@^5.0.1/dist/maplibre-gl.css" rel="stylesheet" />
+
+-> otra opcion y mejor es https://docs.maptiler.com/sdk-js/examples/how-to-use/
+
+-> https://docs.maptiler.com/cloud/api/geolocation/
+-> https://docs.maptiler.com/cloud/api/geocoding/
+
+
+----> Otros diseños de mapas: https://maplibre.org/maplibre-gl-js/docs/examples/3d-buildings/
+
+-> API de maptiler para geocoding: 
+https://api.maptiler.com/geocoding/ip.json?key=EaUzllHlNxi22U4bOfIt
+
+> Instalar axios: npm install axios
+-> Instalar la extension: Paste JSON as Code
+-> En VSC abrir la extension Paste JSON as Code en busqueda y escribir: >paste as Code → Escribir: PlacesResponse(nombre de la interfaz principal) → Enter
+
+-> SI no se quiere instalar la extension Paste JSON as Code ir al sitio: https://quicktype.io/
+-> En https://app.quicktype.io/ especificamente en NAME escribir: PlacesResponse  en Souce Type: JSON. -> Pegar el codigo ahi y
+-> Clic en Options y seleccionar el Language: Typescript, y seleccionar: Interfaces only y verify JSON.parse result y listo genera interfaces.
+
+-> Ir a postaman y hacer peticion GET y copiar la respuesta: https://api.maptiler.com/geocoding/ip.json?key=EaUzllHlNxi22U4bOfIt
+-> En el proyecto en la carpeta interfaces crear archivo directions y pegar la respuesta, luego abrir la barra de busqueda en VSC y ejecutar: >Paste JSON as Code y agregar nombre: directionsResponse
+
+
+-> Nota APORTE:
+
+
+ Api que al final use, ya que  no puede usar mapbox  por  cuestines de pago o tarjetas  debito no aceptadas  https://www.maptiler.com/cloud/geocoding/ y esto otro lastima que no es free tiene limitantes   https://openrouteservice.org/dev/#/api-docs/v2/directions/%7Bprofile%7D/get
+
+https://project-osrm.org/
+
+https://api.maptiler.com/geocoding/{-99.1332},{19.4326},{-98.7624},{19.2826}.json?key=EaUzllHlNxi22U4bOfIt
+https://api.maptiler.com/geocoding/{-99.1332, 19.4326},{-98.7624, 19.2826}.json?key=EaUzllHlNxi22U4bOfIt
+
+https://api.maptiler.com/geocoding/{-99.1332, 19.4326};{-98.7624, 19.2826}.json?key=EaUzllHlNxi22U4bOfIt
+
+
+ const url = `https://api.maptiler.com/routes/${profile}/${start.lon},${start.lat};${end.lon},${end.lat}.json?key=${apiKey}`;
+
+  try {
+
+
+
+Retalhuleu, Guatemala:
+
+Latitud: 14.53611
+Longitud: -91.67778 
+GEODATOS
+Antigua Guatemala, Guatemala:
+
+Latitud: 14.56111
+Longitud: -90.73444
+
+
+
+coordenadas:
+https://api.maptiler.com/coordinates/transform/14.53611,-91.67778;14.56111,-90.73444.json?key=EaUzllHlNxi22U4bOfIt
+https://api.maptiler.com/geocoding/ip.json?key=EaUzllHlNxi22U4bOfIt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
